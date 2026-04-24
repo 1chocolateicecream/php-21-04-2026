@@ -14,4 +14,8 @@ if ($requestUri === '/' || $requestUri === '/index.php') {
     CustomerController::index();
 } elseif ($requestUri === '/orders') {
     OrderController::index();
+} elseif ($requestUri === '/orders/create') {
+    OrderController::create();
+} elseif ($requestUri === '/orders/store') {
+    OrderController::store();
 }

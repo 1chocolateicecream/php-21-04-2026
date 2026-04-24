@@ -26,4 +26,17 @@ class Order {
         $stmt = DB::query("SELECT COUNT(*) FROM orders");
         return (int)$stmt->fetchColumn();
     }
+
+    public static function create(array $data): bool {
+        $pdo = DB::connect();
+        $sql = "INSERT INTO orders (order_date, status, comment, customer_id, image) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([
+            $data['order_date'],
+            $data['status'],
+            $data['comment'],
+            $data['customer_id'],
+            $data['image'] ?? null
+        ]);
+    }
 }
