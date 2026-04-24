@@ -1,163 +1,92 @@
-# PHP Store Management System
+# Store Management System (MVC)
 
-A PHP-based application for managing a store database. This project provides a foundation for building store management functionalities with a clean architecture and environment-based configuration.
+A PHP-based Model-View-Controller (MVC) application for managing a store database. This project allows you to view and manage customers and their orders through a clean, organized web interface.
 
-## Overview
+## 🚀 Tech Stack
 
-The PHP Store Management System is a lightweight, modular PHP project designed to handle store-related operations with a focus on maintainability and scalability. It follows best practices with separation of concerns through organized directory structures and environment-based configuration.
+- **Backend**: PHP 7.4+ (Pure PHP)
+- **Database**: MySQL / MariaDB
+- **Architecture**: MVC (Model-View-Controller)
+- **Frontend**: HTML5, CSS3
 
-## Features
+## ✨ Features
 
-- **Database Management**: Easy-to-configure database connectivity
-- **Environment Configuration**: Flexible .env-based configuration system
-- **Modular Structure**: Organized code separation with public, source, and database directories
-- **Scalable Architecture**: Built to grow with your application needs
-- **Security-First**: Configuration files excluded from version control
+- **Home Page**: Overview of the store management system.
+- **Customer Management**: View a list of customers, including their points and contact details.
+- **Order Tracking**: Monitor order statuses (new, paid, delivered) and associated customer information.
+- **Environment Driven**: Secure configuration using `.env` files.
+- **MVC Architecture**: Separated concerns for better maintainability.
 
-## Project Structure
+## 📂 Project Structure
 
 ```
-php-21-04-2026/
-├── public/              # Public-facing files and entry points
+veikals/
+├── db/                  # Database scripts and connection logic
+│   ├── DB.php           # Database connection class (PDO)
+│   └── db.sql           # SQL schema and seed data
+├── public/              # Web-accessible entry point
+│   ├── index.php        # Main router and controller dispatcher
+│   ├── style.css        # Application styles
+│   └── images/          # Assets (icons, product images)
 ├── src/                 # Application source code
-├── db/                  # Database-related files and schemas
-├── .env.example         # Example environment configuration
-├── .gitignore           # Git ignore rules
-└── README.md            # This file
+│   ├── controllers/     # Request handlers
+│   ├── models/          # Data logic and database interaction
+│   ├── views/           # UI templates (HTML/PHP)
+│   └── Env.php          # Custom .env loader
+├── .env.example         # Template for environment variables
+└── README.md            # Project documentation
 ```
 
-### Directory Descriptions
+## 🛠️ Installation
 
-- **public/** - Contains the web-accessible files, such as index.php or assets
-- **src/** - Houses the core application logic, classes, and business logic
-- **db/** - Stores database migrations, schemas, and seed files
-
-## Installation
-
-### Prerequisites
-
-- PHP 7.4 or higher
-- MySQL/MariaDB 5.7 or higher
-- Git
-
-### Setup Steps
-
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/1chocolateicecream/php-21-04-2026.git
-   cd php-21-04-2026
-   ```
-
-2. **Configure Environment Variables**
-   ```bash
-   cp .env.example .env
-   ```
-
-3. **Edit Configuration**
-   Open `.env` and update the following values:
-   ```dotenv
-   DB_HOST=localhost      # Your database host
-   DB_NAME=store_dev1     # Your database name
-   DB_USER=store_app1     # Your database user
-   DB_PASS=password       # Your database password
-   ```
-
-4. **Create Database** (if not already created)
-   ```bash
-   mysql -u root -p -e "CREATE DATABASE store_dev1;"
-   mysql -u root -p -e "CREATE USER 'store_app1'@'localhost' IDENTIFIED BY 'password';"
-   mysql -u root -p -e "GRANT ALL PRIVILEGES ON store_dev1.* TO 'store_app1'@'localhost';"
-   ```
-
-5. **Set Up Web Server**
-   - Point your web server's document root to the `public/` directory
-   - Ensure PHP is configured to run scripts in the public folder
-
-## Configuration
-
-The application uses environment variables stored in the `.env` file:
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `DB_HOST` | Database server hostname | localhost |
-| `DB_NAME` | Database name | store_dev1 |
-| `DB_USER` | Database username | store_app1 |
-| `DB_PASS` | Database password | password |
-
-**Important**: Never commit the `.env` file to version control. Use `.env.example` as a template for new installations.
-
-## Usage
-
-### Running the Application
-
-1. Start your local web server:
-   ```bash
-   php -S localhost:8000 -t public
-   ```
-
-2. Open your browser and navigate to:
-   ```
-   http://localhost:8000
-   ```
-
-3. Begin interacting with the store management system
-
-### Database Access
-
-Connect to the database using the credentials defined in your `.env` file:
-
+### 1. Clone the Repository
 ```bash
-mysql -h DB_HOST -u DB_USER -p DB_NAME
+git clone https://github.com/1chocolateicecream/php-21-04-2026.git
+cd veikals
 ```
 
-## Development
+### 2. Database Setup
+1. Import the database schema:
+   ```bash
+   mysql -u root -p < db/db.sql
+   ```
+2. (Optional) If you didn't run the full script, ensure you have a database named `store_dev1`.
 
-### Project Guidelines
+### 3. Environment Configuration
+Copy the example file and update it with your database credentials:
+```bash
+cp .env.example .env
+```
+Edit `.env`:
+```dotenv
+DB_HOST=localhost
+DB_NAME=store_dev1
+DB_USER=your_username
+DB_PASS=your_password
+```
 
-- Follow PSR-12 PHP coding standards
-- Use meaningful variable and function names
-- Keep the separation of concerns clean
-- Test your changes before committing
+### 4. Run the Application
+Start the built-in PHP server:
+```bash
+php -S localhost:8000 -t public
+```
 
-### Adding Features
+## 🌐 Available Routes
 
-1. Create new classes in the `src/` directory
-2. Add database migrations in the `db/` directory
-3. Update public-facing pages in the `public/` directory
+Once the server is running, you can access:
 
-## Security
+- `http://localhost:8000/` — **Home Page**
+- `http://localhost:8000/customers` — **Customers List**
+- `http://localhost:8000/orders` — **Orders Overview**
 
-### Best Practices
+## 🔐 Security
 
-- ✅ Keep the `.env` file in `.gitignore` (already configured)
-- ✅ Use parameterized queries to prevent SQL injection
-- ✅ Validate and sanitize all user inputs
-- ✅ Use HTTPS in production
-- ✅ Keep PHP and all dependencies updated
-- ✅ Never commit sensitive credentials
+- **Environment Variables**: Sensitive data is stored in `.env`, which is excluded from Git via `.gitignore`.
+- **Prepared Statements**: The application uses PDO with prepared statements to prevent SQL injection.
 
-## Contributing
+## 📝 License
 
-To contribute to this project:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is open source and available under the MIT License.
-
-## Support
-
-For questions, issues, or suggestions:
-
-- Open an issue on GitHub: [Issues](https://github.com/1chocolateicecream/php-21-04-2026/issues)
-- Check existing documentation in this README
-- Review the project structure for code organization
+This project is open source and available under the [MIT License](LICENSE).
 
 ---
-
-**Last Updated**: April 23, 2026
+**Last Updated**: April 24, 2026
