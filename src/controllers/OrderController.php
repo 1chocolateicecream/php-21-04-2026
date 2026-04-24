@@ -37,11 +37,11 @@ class OrderController {
             }
 
             $data = [
-                'order_date' => $_POST['order_date'],
-                'status' => $_POST['status'],
-                'comment' => $_POST['comment'],
+                'order_date'  => $_POST['order_date'],
+                'status'      => $_POST['status'],
+                'comment'     => $_POST['comment'] ?? null,
                 'customer_id' => $_POST['customer_id'],
-                'image' => $imagePath
+                'image'       => $imagePath
             ];
 
             if (Order::create($data)) {

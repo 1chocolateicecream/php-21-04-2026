@@ -45,19 +45,19 @@
         <tbody>
         <?php foreach ($orders as $order): ?>
             <tr>
-                <td><?php echo htmlspecialchars($order['id']); ?></td>
-                <td><?php echo htmlspecialchars($order['order_date']); ?></td>
-                <td><?php echo htmlspecialchars($order['first_name'] . ' ' . $order['last_name']); ?></td>
+                <td><?php echo htmlspecialchars($order->id); ?></td>
+                <td><?php echo htmlspecialchars($order->order_date); ?></td>
+                <td><?php echo htmlspecialchars($order->first_name . ' ' . $order->last_name); ?></td>
                 <td>
-                    <span class="status-badge status-<?php echo htmlspecialchars($order['status']); ?>">
-                        <?php echo htmlspecialchars($order['status']); ?>
+                    <span class="status-badge status-<?php echo htmlspecialchars($order->status); ?>">
+                        <?php echo htmlspecialchars($order->status); ?>
                     </span>
                 </td>
-                <td><?php echo htmlspecialchars($order['comment']); ?></td>
-                <td><?php echo htmlspecialchars($order['shipping_date'] ?: '—'); ?></td>
+                <td><?php echo htmlspecialchars($order->comment ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($order->shipping_date ?: '—'); ?></td>
                 <td>
-                    <?php if ($order['image']): ?>
-                        <img src="/<?php echo htmlspecialchars($order['image']); ?>" alt="order" width="60" class="miku-img">
+                    <?php if ($order->image): ?>
+                        <img src="/<?php echo htmlspecialchars($order->image); ?>" alt="order" width="60" class="miku-img">
                     <?php else: ?>
                         —
                     <?php endif; ?>

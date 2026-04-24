@@ -33,8 +33,8 @@
                 <select id="customer_id" name="customer_id" required>
                     <option value="">— Izvēlieties klientu —</option>
                     <?php foreach ($customers as $customer): ?>
-                        <option value="<?php echo $customer['id']; ?>">
-                            <?php echo htmlspecialchars($customer['first_name'] . ' ' . $customer['last_name']); ?>
+                        <option value="<?php echo $customer->id; ?>">
+                            <?php echo htmlspecialchars($customer->first_name . ' ' . $customer->last_name); ?>
                         </option>
                     <?php endforeach; ?>
                 </select>

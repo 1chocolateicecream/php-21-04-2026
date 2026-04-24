@@ -3,10 +3,21 @@
 require_once __DIR__ . '/../../db/DB.php';
 
 class Order {
+    public int $id;
+    public string $order_date;
+    public string $status;
+    public ?string $comment;
+    public ?string $image;
+    public ?string $shipping_date;
+    public int $customer_id;
+
+    // Joined fields
+    public ?string $first_name = null;
+    public ?string $last_name = null;
 
     public static function all(?string $status = null): array {
         $sql = "SELECT o.order_id AS id, o.order_date, o.status, o.comment, o.image, o.shipping_date, 
-                       c.first_name, c.last_name
+                       c.first_name, c.last_name, o.customer_id
                 FROM orders o
                 JOIN customers c ON o.customer_id = c.customer_id";
         
@@ -19,7 +30,7 @@ class Order {
             $stmt = $pdo->query($sql);
         }
         
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 
     public static function count(): int {
