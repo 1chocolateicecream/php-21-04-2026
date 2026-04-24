@@ -1,0 +1,67 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4faf9;
+    margin: 0;
+    padding: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 1000px;
+    background: white;
+    border: 2px solid #86d2cc;
+}
+
+th, td {
+    border: 1px solid #d1eeeb;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #eaf8f7;
+    color: #2a8f87;
+}
+
+.miku-img {
+    border-radius: 8px;
+    border: 1px solid #f89bc9;
+}
+
+a {
+    color: #2a8f87;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    width: 80%;
+}
+
+li {
+    background: white;
+    border: 1px solid #d1eeeb;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+li ul {
+    width: 100%;
+    margin-top: 10px;
+}
+
+li ul li {
+    background: #fdfdfd;
+    border-left: 4px solid #86d2cc;
+    padding: 8px;
+}
