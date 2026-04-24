@@ -40,6 +40,7 @@
                 <th>Komentārs</th>
                 <th>Piegādes datums</th>
                 <th>Attēls</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -49,9 +50,13 @@
                 <td><?php echo htmlspecialchars($order->order_date); ?></td>
                 <td><?php echo htmlspecialchars($order->first_name . ' ' . $order->last_name); ?></td>
                 <td>
-                    <span class="status-badge status-<?php echo htmlspecialchars($order->status); ?>">
-                        <?php echo htmlspecialchars($order->status); ?>
-                    </span>
+                    <form action="/orders/<?php echo $order->id; ?>/status" method="POST" class="status-form">
+                        <select name="status" onchange="this.form.submit()" class="status-select status-<?php echo htmlspecialchars($order->status); ?>">
+                            <option value="new"       <?php echo $order->status === 'new'       ? 'selected' : ''; ?>>Jauns</option>
+                            <option value="paid"      <?php echo $order->status === 'paid'      ? 'selected' : ''; ?>>Apmaksāts</option>
+                            <option value="delivered" <?php echo $order->status === 'delivered' ? 'selected' : ''; ?>>Piegādāts</option>
+                        </select>
+                    </form>
                 </td>
                 <td><?php echo htmlspecialchars($order->comment ?? ''); ?></td>
                 <td><?php echo htmlspecialchars($order->shipping_date ?: '—'); ?></td>
@@ -61,6 +66,10 @@
                     <?php else: ?>
                         —
                     <?php endif; ?>
+                </td>
+                <td>
+                    <a href="/orders/<?php echo $order->id; ?>/edit" class="btn btn-edit">Labot</a>
+                    <a href="/orders/<?php echo $order->id; ?>" class="btn btn-receipt">Čeks</a>
                 </td>
             </tr>
         <?php endforeach; ?>

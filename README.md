@@ -11,9 +11,11 @@ A PHP-based Model-View-Controller (MVC) application for managing a store databas
 
 ## ✨ Features
 
-- **Home Page**: Overview of the store management system.
+- **Home Page**: Overview with customer and order statistics.
 - **Customer Management**: View a list of customers, including their points and contact details.
-- **Order Tracking**: Monitor order statuses (new, paid, delivered) and associated customer information.
+- **Order Tracking**: View, create, edit, and delete orders with status filtering.
+- **Quick Status Change**: Change order status (new → paid → delivered) directly from the orders table.
+- **Order Receipt**: Print-ready receipt/invoice page for any order (`/orders/{id}`).
 - **Environment Driven**: Secure configuration using `.env` files.
 - **MVC Architecture**: Separated concerns for better maintainability.
 
@@ -75,14 +77,23 @@ php -S localhost:8000 -t public
 
 Once the server is running, you can access:
 
-- `http://localhost:8000/` — **Home Page**
-- `http://localhost:8000/customers` — **Customers List**
-- `http://localhost:8000/orders` — **Orders Overview**
+| Route | Description |
+|-------|-------------|
+| `/` | Home page with stats |
+| `/customers` | Customer list |
+| `/orders` | Orders list with status filter |
+| `/orders/create` | Create new order |
+| `/orders/{id}` | Order receipt (print-ready) |
+| `/orders/{id}/edit` | Edit order |
 
 ## 🔐 Security
 
 - **Environment Variables**: Sensitive data is stored in `.env`, which is excluded from Git via `.gitignore`.
 - **Prepared Statements**: The application uses PDO with prepared statements to prevent SQL injection.
+
+## 🎨 Design Inspiration
+
+The color palette is centered around `#39C5BB` — a very particular shade of teal — paired with soft pink accents. Those familiar with the virtual music scene might recognize where it comes from♪
 
 ## 📝 License
 

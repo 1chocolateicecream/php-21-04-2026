@@ -396,3 +396,253 @@ li ul li {
     padding: 8px 12px;
     box-shadow: none;
 }
+
+/* ── Inline status select (orders table) ────── */
+.status-form {
+    display: inline;
+}
+
+.status-select {
+    border: none;
+    border-radius: 20px;
+    font-size: .72rem;
+    font-weight: 700;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    cursor: pointer;
+    padding: 3px 11px;
+    outline: none;
+    transition: opacity .15s;
+}
+
+.status-select:hover {
+    opacity: .8;
+}
+
+.status-select.status-new {
+    background: #e8f4fd;
+    color: #2980b9;
+}
+
+.status-select.status-paid {
+    background: var(--teal-pale);
+    color: var(--teal-dark);
+}
+
+.status-select.status-delivered {
+    background: #f0fde8;
+    color: #27ae60;
+}
+
+/* ── Edit button (orders table) ──────────────── */
+.btn-edit {
+    background: var(--teal-pale);
+    color: var(--teal-dark);
+    border: 1.5px solid var(--teal-light);
+    font-size: .8rem;
+    padding: 5px 14px;
+    margin-right: 4px;
+}
+
+.btn-edit:hover {
+    background: var(--teal);
+    color: var(--white);
+    border-color: var(--teal);
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(57, 197, 187, .3);
+}
+
+/* ── Delete button ───────────────────────────── */
+.btn-danger {
+    background: #fdeaea;
+    color: #c0392b;
+    border: 1.5px solid #f1a9a0;
+    width: 100%;
+    padding: 13px;
+    font-size: .95rem;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+    color: var(--white);
+    border-color: #c0392b;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(192, 57, 43, .3);
+}
+
+/* ── Receipt button (orders table) ───────────── */
+.btn-receipt {
+    background: var(--pink-light);
+    color: #c0608e;
+    border: 1.5px solid var(--pink);
+    font-size: .8rem;
+    padding: 5px 14px;
+}
+
+.btn-receipt:hover {
+    background: var(--pink);
+    color: var(--white);
+    border-color: var(--pink);
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(244, 170, 207, .35);
+}
+
+/* ── Receipt / Invoice page ──────────────────── */
+.receipt-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.receipt-actions .btn {
+    margin-bottom: 0;
+}
+
+.btn-print {
+    background: var(--pink-light);
+    color: #c0608e;
+    border: 1.5px solid var(--pink);
+}
+
+.btn-print:hover {
+    background: var(--pink);
+    color: var(--white);
+    border-color: var(--pink);
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(244, 170, 207, .35);
+}
+
+.receipt {
+    position: relative;
+    background: var(--white);
+    width: 100%;
+    max-width: 480px;
+    padding: 44px 40px 56px;
+    border-radius: var(--r);
+    box-shadow: var(--shadow-md);
+    border-top: 5px solid var(--teal);
+}
+
+.receipt-header {
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.receipt-store-name {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--teal-dark);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.receipt-subtitle {
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+.receipt-id {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-top: 10px;
+    letter-spacing: -.02em;
+}
+
+.receipt-divider {
+    border: none;
+    border-top: 2px dashed var(--teal-light);
+    margin: 18px 0;
+}
+
+.receipt-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    font-size: .9rem;
+}
+
+.receipt-label {
+    font-size: .73rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: var(--muted);
+}
+
+.receipt-value {
+    font-weight: 600;
+    text-align: right;
+    color: var(--text);
+}
+
+.receipt-comment {
+    padding: 4px 0;
+}
+
+.receipt-comment p {
+    margin-top: 8px;
+    font-size: .92rem;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+.receipt-image-wrap {
+    text-align: center;
+    padding: 6px 0;
+}
+
+.receipt-image {
+    max-width: 220px;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: var(--r);
+}
+
+.receipt-footer {
+    text-align: center;
+    color: var(--pink);
+    font-weight: 700;
+    font-size: .95rem;
+    letter-spacing: .04em;
+}
+
+/* Miku stamp — drop /public/images/miku-stamp.png to activate */
+.miku-stamp {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    transform: rotate(-14deg);
+    opacity: .88;
+}
+
+/* ── Print ───────────────────────────────────── */
+@media print {
+    nav,
+    .no-print {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        padding: 0;
+        display: block;
+    }
+
+    .receipt {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
